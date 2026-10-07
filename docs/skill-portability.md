@@ -28,6 +28,8 @@ python3 scripts/package_skills.py install dist/zips/citation-verifier.zip --dest
 
 The command refuses to replace an existing same-name skill unless `--replace` is supplied. Codex detects skill changes automatically; if a new skill does not appear, restart Codex. Check current [Codex skills documentation](https://developers.openai.com/codex/skills) before relying on locations or behavior that may change.
 
+ZIP installation rejects archives larger than 32 MiB, more than 1,000 entries, any entry larger than 16 MiB, or a total uncompressed size above 64 MiB. These limits bound disk use for manually selected archives; the repository's generated bundles are much smaller.
+
 To use source skills in place during repository development, keep `shared/`, `templates/`, and `venues/` alongside `skills/`, and create a symlink under `.agents/skills/` for each skill you want Codex to discover. Codex documents support for symlinked skill folders. For example, from the repository root:
 
 ```bash

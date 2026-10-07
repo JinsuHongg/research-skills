@@ -3,6 +3,7 @@ import io
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -526,6 +527,64 @@ class InstallationAndCliTests(unittest.TestCase):
 
             with self.assertRaisesRegex(ValueError, "symlink|unsafe|member"):
                 package_skills.install_bundle(archive, destination)
+            self.assertFalse(destination.exists())
+
+    def test_zip_install_rejects_archive_over_compressed_size_limit(self):
+        import zipfile
+
+        with tempfile.TemporaryDirectory() as temporary:
+            archive = Path(temporary) / "large.zip"
+            with zipfile.ZipFile(archive, "w") as zipped:
+                zipped.writestr("alpha/SKILL.md", "---\nname: alpha\ndescription: Safe\n---\n")
+            destination = Path(temporary) / "skills"
+
+            with patch.object(package_skills, "MAX_ZIP_ARCHIVE_SIZE", 1):
+                with self.assertRaisesRegex(ValueError, "archive.*limit|limit.*archive"):
+                    package_skills.install_bundle(archive, destination)
+            self.assertFalse(destination.exists())
+
+    def test_zip_install_rejects_excessive_member_count(self):
+        import zipfile
+
+        with tempfile.TemporaryDirectory() as temporary:
+            archive = Path(temporary) / "many.zip"
+            with zipfile.ZipFile(archive, "w") as zipped:
+                zipped.writestr("alpha/SKILL.md", "---\nname: alpha\ndescription: Safe\n---\n")
+                zipped.writestr("alpha/reference.md", "small")
+            destination = Path(temporary) / "skills"
+
+            with patch.object(package_skills, "MAX_ZIP_MEMBERS", 1):
+                with self.assertRaisesRegex(ValueError, "member count|members"):
+                    package_skills.install_bundle(archive, destination)
+            self.assertFalse(destination.exists())
+
+    def test_zip_install_rejects_oversized_member(self):
+        import zipfile
+
+        with tempfile.TemporaryDirectory() as temporary:
+            archive = Path(temporary) / "large-member.zip"
+            with zipfile.ZipFile(archive, "w") as zipped:
+                zipped.writestr("alpha/SKILL.md", "x" * 11)
+            destination = Path(temporary) / "skills"
+
+            with patch.object(package_skills, "MAX_ZIP_MEMBER_SIZE", 10):
+                with self.assertRaisesRegex(ValueError, "member.*limit|size limit"):
+                    package_skills.install_bundle(archive, destination)
+            self.assertFalse(destination.exists())
+
+    def test_zip_install_rejects_excessive_total_uncompressed_size(self):
+        import zipfile
+
+        with tempfile.TemporaryDirectory() as temporary:
+            archive = Path(temporary) / "large-total.zip"
+            with zipfile.ZipFile(archive, "w") as zipped:
+                zipped.writestr("alpha/SKILL.md", "x" * 8)
+                zipped.writestr("alpha/reference.md", "y" * 8)
+            destination = Path(temporary) / "skills"
+
+            with patch.object(package_skills, "MAX_ZIP_TOTAL_SIZE", 10):
+                with self.assertRaisesRegex(ValueError, "total.*limit|uncompressed size"):
+                    package_skills.install_bundle(archive, destination)
             self.assertFalse(destination.exists())
 
     def test_cli_lists_packages_validates_and_installs(self):

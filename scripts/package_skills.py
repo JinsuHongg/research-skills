@@ -28,6 +28,10 @@ REFERENCE_DEFINITION = re.compile(
 FENCE_OPEN = re.compile(r"^[ \t]{0,3}(`{3,}|~{3,})")
 INLINE_CODE = re.compile(r"(?<!`)(`+)(?!`)(.*?)(?<!`)\1(?!`)", re.DOTALL)
 SOURCE_AREAS = ("shared", "templates", "venues")
+MAX_ZIP_ARCHIVE_SIZE = 32 * 1024 * 1024
+MAX_ZIP_MEMBERS = 1000
+MAX_ZIP_MEMBER_SIZE = 16 * 1024 * 1024
+MAX_ZIP_TOTAL_SIZE = 64 * 1024 * 1024
 
 
 def _frontmatter(skill_file: Path) -> dict[str, str]:
@@ -424,13 +428,30 @@ def create_zip(bundle: Path, zip_path: Path) -> Path:
 
 
 def _extract_zip_bundle(archive_path: Path, extraction_root: Path) -> Path:
+    archive_size = archive_path.stat().st_size
+    if archive_size > MAX_ZIP_ARCHIVE_SIZE:
+        raise ValueError(
+            f"ZIP archive exceeds the {MAX_ZIP_ARCHIVE_SIZE}-byte archive size limit"
+        )
     try:
         with zipfile.ZipFile(archive_path) as archive:
             infos = archive.infolist()
+            if len(infos) > MAX_ZIP_MEMBERS:
+                raise ValueError(f"ZIP member count exceeds the {MAX_ZIP_MEMBERS}-member limit")
+            total_size = 0
             roots: set[str] = set()
             seen: set[str] = set()
             members: list[tuple[zipfile.ZipInfo, tuple[str, ...]]] = []
             for info in infos:
+                if info.file_size > MAX_ZIP_MEMBER_SIZE:
+                    raise ValueError(
+                        f"ZIP member exceeds the {MAX_ZIP_MEMBER_SIZE}-byte size limit: {info.filename!r}"
+                    )
+                total_size += info.file_size
+                if total_size > MAX_ZIP_TOTAL_SIZE:
+                    raise ValueError(
+                        f"ZIP total uncompressed size exceeds the {MAX_ZIP_TOTAL_SIZE}-byte limit"
+                    )
                 raw_name = info.filename
                 if "\\" in raw_name or "\x00" in raw_name or ":" in raw_name:
                     raise ValueError(f"Unsafe ZIP member path: {raw_name!r}")
