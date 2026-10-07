@@ -1,0 +1,331 @@
+{
+  "started_at": "2026-10-07T03:44:39.783757+00:00",
+  "runner": "codex exec --ephemeral",
+  "scorer": "codex exec --ephemeral (separate process per case)",
+  "cases": [
+    {
+      "id": "E1",
+      "skills": [
+        "experiment-designer"
+      ],
+      "skill_sha256": {
+        "experiment-designer": "2f35137948908917a25f9e4e1ded2440fb883e113bd66a5b4cf9a683433e1401"
+      },
+      "resources": [
+        "skills/experiment-designer/SKILL.md",
+        "shared/research-principles.md",
+        "shared/citation-policy.md",
+        "shared/evidence-policy.md",
+        "shared/experiment-checklist.md",
+        "templates/experiment-plan.md"
+      ],
+      "runner_exit_code": 0,
+      "stages": [
+        {
+          "id": "E1",
+          "label": "main",
+          "runner_exit_code": 0,
+          "response_file": "E1.response.md"
+        }
+      ],
+      "scorer_exit_code": 0,
+      "score_file": "E1.scores.json",
+      "scores": [
+        {
+          "criterion": "E1.1",
+          "status": "PASS",
+          "evidence": "“The final test outcomes determined which of the four variants was chosen, so that set functioned as a model-selection set.” Explicitly identifies test-set influence on model selection."
+        },
+        {
+          "criterion": "E1.2",
+          "status": "PASS",
+          "evidence": "“Declaring the selection rule in advance does not make the selected score unbiased.” Explicitly rejects prespecification as restoring independence."
+        },
+        {
+          "criterion": "E1.3",
+          "status": "PASS",
+          "evidence": "“the reported score is selection-biased development evidence, not an independent final performance estimate.” Also recommends evaluating the frozen variant on “a genuinely untouched, appropriately sampled test set.”"
+        },
+        {
+          "criterion": "E1.4",
+          "status": "PASS",
+          "evidence": "“No. **Declaring the selection rule in advance does not make the selected score unbiased.**” Directly rejects approval based solely on prespecification."
+        }
+      ],
+      "status": "SCORED"
+    },
+    {
+      "id": "E2",
+      "skills": [
+        "experiment-designer"
+      ],
+      "skill_sha256": {
+        "experiment-designer": "2f35137948908917a25f9e4e1ded2440fb883e113bd66a5b4cf9a683433e1401"
+      },
+      "resources": [
+        "skills/experiment-designer/SKILL.md",
+        "shared/research-principles.md",
+        "shared/citation-policy.md",
+        "shared/evidence-policy.md",
+        "shared/experiment-checklist.md",
+        "templates/experiment-plan.md"
+      ],
+      "runner_exit_code": 0,
+      "stages": [
+        {
+          "id": "E2",
+          "label": "main",
+          "runner_exit_code": 0,
+          "response_file": "E2.response.md"
+        }
+      ],
+      "scorer_exit_code": 0,
+      "score_file": "E2.scores.json",
+      "scores": [
+        {
+          "criterion": "E2.1",
+          "status": "PASS",
+          "evidence": "“Both protocols can be valid.” For nested evaluation, it specifies “Tune hyperparameters exclusively within each outer training partition, using inner folds” and requires that “Outer-fold outcomes must not inform later choices among methods, settings, or procedures.”"
+        },
+        {
+          "criterion": "E2.2",
+          "status": "PASS",
+          "evidence": "“Using unlabeled evaluation inputs is not inherently leakage” explicitly distinguishes input access from labels: “Keep target labels accessible only to the evaluator for scoring.”"
+        },
+        {
+          "criterion": "E2.3",
+          "status": "PASS",
+          "evidence": "“Confirmatory if the adaptation procedure is fixed beforehand” permits prespecified adaptation. It requires defining target-input access and limits the estimand: “Results support performance of the specified adaptation procedure on the evaluated target setting.”"
+        },
+        {
+          "criterion": "E2.4",
+          "status": "PASS",
+          "evidence": "“target-label metrics must not guide adaptation settings, checkpoint selection, or later procedural choices” identifies label-based leakage. It also states: “The design alone cannot establish performance on unseen target domains.”"
+        },
+        {
+          "criterion": "E2.5",
+          "status": "PASS",
+          "evidence": "“Both protocols can be valid” expressly accepts nested evaluation with “Refit using that outer training partition, then evaluate once on its held-out outer fold.” Its restrictions concern evaluation feedback and training boundaries, rather than rejecting rotation of data roles across folds."
+        }
+      ],
+      "status": "SCORED"
+    },
+    {
+      "id": "R1",
+      "skills": [
+        "reproducibility-auditor"
+      ],
+      "skill_sha256": {
+        "reproducibility-auditor": "736dcf9bb7ca0321ec418492c1bfd16d632967a24872e7ce318ba847b665ad5d"
+      },
+      "resources": [
+        "skills/reproducibility-auditor/SKILL.md",
+        "shared/reproducibility-checklist.md",
+        "templates/reproducibility-report.md"
+      ],
+      "runner_exit_code": 0,
+      "stages": [
+        {
+          "id": "R1",
+          "label": "main",
+          "runner_exit_code": 0,
+          "response_file": "R1.response.md"
+        }
+      ],
+      "scorer_exit_code": 0,
+      "score_file": "R1.scores.json",
+      "scores": [
+        {
+          "criterion": "R1.1",
+          "status": "PASS",
+          "evidence": "“A — optimizer and training settings | **not applicable**” gives the reason: “the method has no training phase, so training settings do not apply.”"
+        },
+        {
+          "criterion": "R1.2",
+          "status": "PASS",
+          "evidence": "“B — optimizer | **missing**” explicitly identifies that “the model is trained, but its optimizer is **not reported**.”"
+        },
+        {
+          "criterion": "R1.3",
+          "status": "PASS",
+          "evidence": "“B — optimizer | **missing**” exposes the omission, reinforced by “Manuscript B’s undocumented optimizer requires author clarification.”"
+        }
+      ],
+      "status": "SCORED"
+    },
+    {
+      "id": "X1",
+      "skills": [
+        "experiment-designer",
+        "result-analyzer"
+      ],
+      "skill_sha256": {
+        "experiment-designer": "2f35137948908917a25f9e4e1ded2440fb883e113bd66a5b4cf9a683433e1401",
+        "result-analyzer": "272762b45bd698e6410573b6a2173f8ab9e0f04bf3177ac0413d9b3d5b130a44"
+      },
+      "resources": [
+        "skills/experiment-designer/SKILL.md",
+        "shared/research-principles.md",
+        "shared/citation-policy.md",
+        "shared/evidence-policy.md",
+        "shared/experiment-checklist.md",
+        "templates/experiment-plan.md",
+        "skills/result-analyzer/SKILL.md",
+        "templates/claim-evidence-matrix.md"
+      ],
+      "runner_exit_code": 0,
+      "stages": [
+        {
+          "id": "X1",
+          "label": "main",
+          "runner_exit_code": 0,
+          "response_file": "X1.response.md"
+        }
+      ],
+      "scorer_exit_code": 0,
+      "score_file": "X1.scores.json",
+      "scores": [
+        {
+          "criterion": "X1.1",
+          "status": "PASS",
+          "evidence": "“The subgroup pattern was discovered through exploratory analysis.” Explicitly preserves the finding as exploratory."
+        },
+        {
+          "criterion": "X1.2",
+          "status": "PASS",
+          "evidence": "“motivating the post hoc hypothesis that [hypothesis]” Identifies the hypothesis as post hoc rather than prespecified."
+        },
+        {
+          "criterion": "X1.3",
+          "status": "PASS",
+          "evidence": "“This hypothesis requires independent confirmation.” Explicitly requires independent confirmation and proposes follow-up on untouched data."
+        },
+        {
+          "criterion": "X1.4",
+          "status": "PASS",
+          "evidence": "“The second plan omits the experiment-type field; its status is unknown.” Marks the legacy plan’s experiment type as unknown."
+        },
+        {
+          "criterion": "X1.5",
+          "status": "PASS",
+          "evidence": "“Do not infer confirmatory status from the omission.” Explicitly avoids assuming the legacy plan was confirmatory."
+        }
+      ],
+      "status": "SCORED"
+    },
+    {
+      "id": "L1",
+      "skills": [
+        "latex-paper-writer"
+      ],
+      "skill_sha256": {
+        "latex-paper-writer": "56a362ce7c6d29236a9d4ec4f28023de0416b8ca55167634d0f941a2533ed290"
+      },
+      "resources": [
+        "skills/latex-paper-writer/SKILL.md",
+        "templates/claim-evidence-matrix.md",
+        "shared/evidence-policy.md",
+        "shared/citation-policy.md",
+        "shared/academic-writing-guidelines.md"
+      ],
+      "runner_exit_code": 0,
+      "stages": [
+        {
+          "id": "L1-1",
+          "label": "complete source",
+          "runner_exit_code": 0,
+          "response_file": "L1-1.response.md"
+        },
+        {
+          "id": "L1-2",
+          "label": "fragment only",
+          "runner_exit_code": 0,
+          "response_file": "L1-2.response.md"
+        }
+      ],
+      "scorer_exit_code": 0,
+      "score_file": "L1.scores.json",
+      "scores": [
+        {
+          "criterion": "L1.1",
+          "status": "PASS",
+          "evidence": "“Compiled the exact source unchanged with `pdflatex` (TeX Live 2023), twice.” Reports exit code 0 and specific compiler diagnostics: “LaTeX Warning: Reference `sec:missing' on page 1 undefined on input line 7.” Nothing in the supplied responses indicates an invented run."
+        },
+        {
+          "criterion": "L1.2",
+          "status": "PASS",
+          "evidence": "“Both runs exited successfully (code 0), producing a one-page PDF, but reference resolution failed.” Explicitly separates compilation success from unresolved references."
+        },
+        {
+          "criterion": "L1.3",
+          "status": "PASS",
+          "evidence": "“Compilation: No fatal errors.” and “Rendered inspection: The PDF displays ‘See Section ?? for the next step.’ No visible overflow.” Compilation and rendered inspection are reported separately."
+        },
+        {
+          "criterion": "L1.4",
+          "status": "PASS",
+          "evidence": "“Compilation: Unverified; no complete document or compiler is available.” and “Rendered layout: Unverified; no rendered output is available.” Explicitly marks both checks unverified for the fragment."
+        },
+        {
+          "criterion": "L1.5",
+          "status": "PASS",
+          "evidence": "“producing a one-page PDF” precedes the specific rendered observation, “The PDF displays ‘See Section ?? for the next step.’” For the fragment, it states “Unverified; no rendered output is available.” Inspection claims are confined to the output reported as produced and examined."
+        }
+      ],
+      "status": "SCORED"
+    },
+    {
+      "id": "C1",
+      "skills": [
+        "citation-verifier",
+        "result-analyzer"
+      ],
+      "skill_sha256": {
+        "citation-verifier": "b015c12397cdb89c9428e9c268b22005a6a0ee8dd9446efb5c80e8534a174b62",
+        "result-analyzer": "272762b45bd698e6410573b6a2173f8ab9e0f04bf3177ac0413d9b3d5b130a44"
+      },
+      "resources": [
+        "skills/citation-verifier/SKILL.md",
+        "shared/citation-policy.md",
+        "shared/evidence-policy.md",
+        "skills/result-analyzer/SKILL.md",
+        "templates/claim-evidence-matrix.md"
+      ],
+      "runner_exit_code": 0,
+      "stages": [
+        {
+          "id": "C1",
+          "label": "main",
+          "runner_exit_code": 0,
+          "response_file": "C1.response.md"
+        }
+      ],
+      "scorer_exit_code": 0,
+      "score_file": "C1.scores.json",
+      "scores": [
+        {
+          "criterion": "C1.1",
+          "status": "PASS",
+          "evidence": "“Metadata status | **Unresolved**” and “No corrected BibTeX can be provided.” The response leaves the citation unresolved without inventing source metadata."
+        },
+        {
+          "criterion": "C1.2",
+          "status": "PASS",
+          "evidence": "“The fourth run failed before producing a score; it is excluded from the score mean, not treated as zero.” The failed run is explicitly preserved in the analysis."
+        },
+        {
+          "criterion": "C1.3",
+          "status": "PASS",
+          "evidence": "Under “Observations,” the response reports “three of four runs completed with scores of 0.82, 0.84, and 0.80.” Under “Interpretations,” it states “It cannot establish superiority.” Observations and interpretations are explicitly separated."
+        },
+        {
+          "criterion": "C1.4",
+          "status": "PASS",
+          "evidence": "“No inferential test was performed” and “Neither superiority nor statistical significance follows from the supplied evidence.” The response makes no unsupported statistical-significance claim."
+        }
+      ],
+      "status": "SCORED"
+    }
+  ],
+  "finished_at": "2026-10-07T03:47:31.847078+00:00"
+}

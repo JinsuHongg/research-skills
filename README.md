@@ -74,8 +74,11 @@ examples/     Public-safe boundaries for future examples
 
 ## Skill Validation
 
+- Current release assessment: **usable v0.1 — six behavioral cases passed; coverage remains limited**. See the [validation results](docs/validation/research-skills-results.md) for case scores and coverage limits.
 - [Synthetic behavioral cases](docs/validation/research-skills-cases.md) define representative evidence-integrity scenarios.
 - [Validation results](docs/validation/research-skills-results.md) record actual runs and limitations. `NOT RUN` means no behavioral result is claimed; these cases do not establish exhaustive reliability.
+- [Skill portability assessment](docs/skill-portability.md) lists repository resources each skill needs when copied.
+- Run the six cases with fresh Codex CLI contexts and a separate rubric-scoring context using `python3 -B scripts/validate_skills.py run --output docs/validation/runs/run-001` (choose a new directory for each run). The harness uses only the Python standard library and requires `codex` on `PATH`; case prompts omit the scoring criteria, and captured responses and scores are stored in the output directory.
 
 ## Use a Skill
 

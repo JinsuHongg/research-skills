@@ -1,5 +1,7 @@
 # Research Skills Improvement Implementation Plan
 
+**Status:** Historical implementation plan. The repository includes implemented items from this plan; see [validation results](../../validation/research-skills-results.md) for the observed validation status.
+
 > **For agentic workers:** Use superpowers:executing-plans for task-by-task implementation; use superpowers:subagent-driven-development only when delegation is authorized. Steps use checkbox (`- [ ]`) syntax for tracking. This document proposes implementation; creating it does not authorize implementation, commits, or external actions.
 
 **Goal:** Resolve policy contradictions and improve audit accuracy and output verification without expanding the existing 15-skill collection.
