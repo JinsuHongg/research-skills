@@ -77,7 +77,7 @@ examples/     Public-safe boundaries for future examples
 - Current release assessment: **usable v0.1 — six behavioral cases passed; coverage remains limited**. See the [validation results](docs/validation/research-skills-results.md) for case scores and coverage limits.
 - [Synthetic behavioral cases](docs/validation/research-skills-cases.md) define representative evidence-integrity scenarios.
 - [Validation results](docs/validation/research-skills-results.md) record actual runs and limitations. `NOT RUN` means no behavioral result is claimed; these cases do not establish exhaustive reliability.
-- [Skill portability assessment](docs/skill-portability.md) lists repository resources each skill needs when copied.
+- [Skill portability guide](docs/skill-portability.md) explains how to package, inspect, and install standalone bundles.
 - Run the six cases with fresh Codex CLI contexts and a separate rubric-scoring context using `python3 -B scripts/validate_skills.py run --output docs/validation/runs/run-001` (choose a new directory for each run). The harness uses only the Python standard library and requires `codex` on `PATH`; case prompts omit the scoring criteria, and captured responses and scores are stored in the output directory.
 
 ## Use a Skill
@@ -88,7 +88,7 @@ examples/     Public-safe boundaries for future examples
 4. Pass validated artifacts to downstream skills; do not treat a planned analysis as completed evidence.
 5. Keep project-specific or sensitive inputs in an authorized private workspace, outside this public collection.
 
-This repository's relative links assume its directory layout. To use its skills in place, point the agent's skill discovery at this repository's `skills/` directory and keep the sibling `shared/` and `templates/` directories available. If you copy the repository, preserve `skills/<name>/`, `shared/`, and `templates/` at the same relative paths; copying only a skill folder breaks its resource links. Exact discovery settings differ across tools. The core safeguards are stated in each skill, while the linked policies and templates provide additional guidance.
+This repository's source skills link to sibling resources in `shared/`, `templates/`, and, through one template, `venues/`. For Codex project use, install a generated standalone bundle under `.agents/skills/<name>/`, or link a source skill folder from `.agents/skills/` and keep repository resources in place. Codex's documented user location is `~/.agents/skills/`. Other hosts use their own discovery locations and reload rules. See the [portability guide](docs/skill-portability.md) and current [Codex skills documentation](https://developers.openai.com/codex/skills). The standalone CLI supports local folder installation and portable bundles; Codex's plugin format is a separate distribution route.
 
 ## Public-Safe Design
 
