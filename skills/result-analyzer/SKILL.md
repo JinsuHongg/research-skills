@@ -17,7 +17,7 @@ Analyze supplied experiment results without upgrading observations into unsuppor
 
 ## Inputs
 
-Required: structured results and enough protocol context to identify metrics, baselines, splits, runs, and intended claims. Optional: raw data, analysis scripts, uncertainty estimates, significance tests, and known deviations. Mark missing context.
+Required: structured results and enough protocol context to identify metrics, baselines, splits, runs, intended claims, and whether the analysis was confirmatory or exploratory when known. Optional: raw data, analysis scripts, uncertainty estimates, significance tests, and known deviations. Mark missing context; for older plans without an experiment type, do not assume confirmatory status.
 
 ## Workflow
 
@@ -26,7 +26,7 @@ Required: structured results and enough protocol context to identify metrics, ba
 3. Report effect sizes and mean/standard deviation or confidence intervals only when calculable and appropriate; name their method and unit.
 4. Compare variation across seeds and conditions; surface failed runs, failure cases, unexpected findings, and trade-offs.
 5. Describe statistical tests only when actually performed and supplied or reproducibly run. State test, assumptions, multiplicity handling, and limits.
-6. Separate **observations**, **interpretations**, **claims justified by evidence**, and **claims still unsupported**.
+6. Separate **observations**, **interpretations**, **claims justified by evidence**, and **claims still unsupported**. Preserve whether results are confirmatory or exploratory. Identify hypotheses formed after observing results as post hoc and state what independent follow-up would test them.
 7. Identify plausible confounders and analyses needed to resolve them. Do not convert an explanation into a result.
 
 ## Output
@@ -43,6 +43,7 @@ Reconcile summaries with supplied tables or raw outputs; verify denominators and
 - Hiding failed runs, seed variation, or unfavorable conditions.
 - Treating a metric difference as causal or generalizable beyond the tested conditions.
 - Reporting unsupported intervals, effect sizes, or fabricated result values.
+- Treating an exploratory pattern or a hypothesis generated from it as prespecified or independently confirmed.
 
 ## Research Integrity Rules
 

@@ -72,6 +72,11 @@ examples/     Public-safe boundaries for future examples
 - [Venue profiles](venues/README.md) are orientation only. Always verify current official requirements.
 - [Templates](templates/) are intentionally blank and reusable.
 
+## Skill Validation
+
+- [Synthetic behavioral cases](docs/validation/research-skills-cases.md) define representative evidence-integrity scenarios.
+- [Validation results](docs/validation/research-skills-results.md) record actual runs and limitations. `NOT RUN` means no behavioral result is claimed; these cases do not establish exhaustive reliability.
+
 ## Use a Skill
 
 1. Choose a skill whose trigger matches the task.

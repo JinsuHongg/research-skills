@@ -1,8 +1,8 @@
 # Reproducibility Report
 
-Use **complete**, **incomplete**, **ambiguous**, or **missing** and cite a manuscript/artifact location for each judgment.
+Use **complete**, **incomplete**, **ambiguous**, **missing**, or **not applicable** and cite a manuscript/artifact location for each judgment. For **not applicable**, explain why the item does not apply to the documented method or audit scope; do not use it to hide unreported settings.
 
-| Area | Status | Evidence location | Missing or ambiguous detail | Reproduction impact |
+| Area | Status | Evidence location / inapplicability reason | Missing or ambiguous detail | Reproduction impact |
 |---|---|---|---|---|
 | Dataset and version |  |  |  |  |
 | Preprocessing |  |  |  |  |

@@ -26,7 +26,7 @@ Required: paper/report sections and available supplements or artifacts. Optional
 3. Check model architecture, initialization, optimizer, learning rate, batch size, epochs, stopping, seeds, and nondeterminism.
 4. Check hyperparameter search, model/checkpoint selection, calibration procedure, evaluation metrics, aggregation, and statistical reporting.
 5. Check hardware, runtime, operating environment, software/library versions, code, configurations, checkpoints, and data availability.
-6. For every item, record **complete**, **incomplete**, **ambiguous**, or **missing**, with a precise source location or an explicit “not reported.”
+6. First determine whether each item applies to the stated method and audit scope. Record **not applicable** only with a reason supported by the supplied materials. For applicable items, use **complete**, **incomplete**, **ambiguous**, or **missing**, with a precise source location or an explicit “not reported.” If applicability itself is unclear, mark **ambiguous** and state what would resolve it.
 7. Summarize reproduction blockers and likely effect. Do not claim irreproducibility solely because code is unavailable if sufficient methods are described; distinguish access barriers from methodological omissions.
 
 ## Output
@@ -35,11 +35,12 @@ Return a [reproducibility report](../../templates/reproducibility-report.md) wit
 
 ## Validation
 
-Check that every status has evidence or is explicitly not reported; compare numbers/settings across paper, supplement, and code when available; ensure ambiguous statements are not upgraded to complete. Use [reproducibility checklist](../../shared/reproducibility-checklist.md).
+Check that every status has evidence or is explicitly not reported; every **not applicable** status has a method- and scope-based reason; compare numbers/settings across paper, supplement, and code when available; ensure ambiguous statements are not upgraded to complete and missing settings are not relabeled inapplicable. Use [reproducibility checklist](../../shared/reproducibility-checklist.md).
 
 ## Failure Modes
 
 - Guessing common defaults for unreported hyperparameters or seeds.
+- Marking an item not applicable merely because the manuscript omitted it.
 - Treating code availability as equivalent to sufficient reproducibility detail.
 - Overlooking differences between paper, supplement, and released artifacts.
 - Calling an item complete when it lacks version, protocol, or selection information.

@@ -1,6 +1,6 @@
 # Reproducibility Checklist
 
-Report each item as **complete**, **incomplete**, **ambiguous**, or **missing**, with a paper or artifact location.
+Report each item as **complete**, **incomplete**, **ambiguous**, **missing**, or **not applicable**, with a paper or artifact location. Use **not applicable** only when the item does not apply to the documented method or audit scope, and state why. Missing documentation is not evidence of inapplicability.
 
 - [ ] Dataset identity, version, access, license, and preprocessing.
 - [ ] Data splits, leakage controls, and any calibration data.

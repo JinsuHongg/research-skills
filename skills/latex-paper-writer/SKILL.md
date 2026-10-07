@@ -27,6 +27,8 @@ Required: target section, research materials/artifacts, and desired scope. Optio
 4. Preserve commands, math, labels, citation keys, cross-references, and notation. Do not alter technical statements during copyediting without flagging the change.
 5. Ensure each empirical statement corresponds to verified results and each literature statement to checked sources. Distinguish observed result from interpretation.
 6. Review for scope, repetition, unsupported certainty, consistency, and LaTeX integrity; return an issue list for unresolved matters.
+7. When the supplied work is a complete buildable document and a supported compiler or established project build command is available, compile it and inspect diagnostics for errors and unresolved references. Do not install a compiler or dependencies for this check.
+8. When rendered output is available, inspect the changed pages at the intended reading size, including affected equations, tables, figures, and overflow. Report source checks, compilation, and rendered inspection as separate outcomes. If the input is only a fragment or required assets/tools are unavailable, do applicable source checks and mark compilation or visual inspection **unverified**.
 
 ## Output
 
@@ -34,7 +36,7 @@ Provide revised LaTeX (or a clearly marked prose draft if source is absent), a c
 
 ## Validation
 
-Trace factual statements to source artifacts, verify numbers and citations verbatim against inputs, check braces/commands and references touched, and compare technical meaning before/after. Use [academic writing guidelines](../../shared/academic-writing-guidelines.md), [citation policy](../../shared/citation-policy.md), and [claim-evidence matrix](../../templates/claim-evidence-matrix.md).
+Trace factual statements to source artifacts, verify numbers and citations verbatim against inputs, check braces/commands and references touched, and compare technical meaning before/after. For a complete buildable document, report actual compiler diagnostics; distinguish compilation from bibliography/reference resolution and rendered-layout inspection. Inspect rendered pages when available. For fragments or unavailable build resources, identify the source checks performed and explicitly report compilation/rendering as unverified. Never imply successful checks that were not run. Use [academic writing guidelines](../../shared/academic-writing-guidelines.md), [citation policy](../../shared/citation-policy.md), and [claim-evidence matrix](../../templates/claim-evidence-matrix.md).
 
 ## Failure Modes
 

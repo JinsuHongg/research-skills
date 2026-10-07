@@ -1,10 +1,12 @@
 # Experiment Plan
 
-Duplicate this section for each experiment. Each experiment must test a paper claim.
+Duplicate this section for each experiment. Confirmatory experiments test a paper claim; exploratory experiments answer a stated question or diagnostic objective.
 
 - **Experiment ID:**
-- **Paper claim tested:**
-- **Hypothesis:**
+- **Experiment type (confirmatory / exploratory):**
+- **Paper claim tested (confirmatory; otherwise not applicable):**
+- **Hypothesis (prespecified for confirmatory work):**
+- **Exploratory question or diagnostic objective (exploratory work):**
 - **Experiment and protocol:**
 - **Dataset / version / provenance:**
 - **Preprocessing:**
@@ -20,7 +22,7 @@ Duplicate this section for each experiment. Each experiment must test a paper cl
 - **Robustness conditions:**
 - **Compute budget:**
 - **Expected evidence:**
-- **Falsification condition:**
+- **Falsification condition (confirmatory) / follow-up for post hoc hypothesis (exploratory):**
 - **Failure analysis:**
 
 Use the [experiment checklist](../shared/experiment-checklist.md) before execution. Do not treat expected outcomes as observed results.
