@@ -7,7 +7,7 @@ description: Use when choosing, designing, revising, or auditing quantitative fi
 
 ## Purpose
 
-Select and specify figures that communicate a scientific claim accurately and readably. The skill guides plot choice and presentation; it does not alter data or infer unavailable uncertainty.
+Select, specify, and review figures that communicate a scientific claim accurately and readably. For creating quantitative plot files and reproducible Python scripts from data, use the `scientific-plot-generator` skill. This skill guides plot choice and presentation; it does not alter data or infer unavailable uncertainty.
 
 ## When to Use
 
@@ -32,7 +32,7 @@ Required: scientific claim, variables, and data or table to visualize. Optional:
 
 ## Output
 
-Return the figure's intended claim, recommended chart type, mapping of variables/series, scale and uncertainty decisions, layout/accessibility specifications, export guidance, and validation checks. If generating a figure, provide the artifact and source data/code when available.
+Return the figure's intended claim, recommended chart type, mapping of variables/series, scale and uncertainty decisions, layout/accessibility specifications, export guidance, and validation checks. For file generation from data, hand off to `scientific-plot-generator`.
 
 ## Validation
 

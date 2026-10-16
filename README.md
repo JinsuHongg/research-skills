@@ -61,7 +61,7 @@ examples/     Public-safe boundaries for future examples
 |---|---|
 | Literature and gap analysis | [literature-review](skills/literature-review/SKILL.md), [research-gap-finder](skills/research-gap-finder/SKILL.md) |
 | Research design | [research-question-designer](skills/research-question-designer/SKILL.md), [experiment-designer](skills/experiment-designer/SKILL.md) |
-| Analysis and visuals | [result-analyzer](skills/result-analyzer/SKILL.md), [publication-figure](skills/publication-figure/SKILL.md), [method-diagram](skills/method-diagram/SKILL.md) |
+| Analysis and visuals | [result-analyzer](skills/result-analyzer/SKILL.md), [publication-figure](skills/publication-figure/SKILL.md), [scientific-plot-generator](skills/scientific-plot-generator/SKILL.md), [method-diagram](skills/method-diagram/SKILL.md) |
 | Writing and evidence checks | [latex-paper-writer](skills/latex-paper-writer/SKILL.md), [claim-evidence-checker](skills/claim-evidence-checker/SKILL.md), [citation-verifier](skills/citation-verifier/SKILL.md) |
 | Review and readiness | [paper-reviewer](skills/paper-reviewer/SKILL.md), [reproducibility-auditor](skills/reproducibility-auditor/SKILL.md), [paper-consistency-checker](skills/paper-consistency-checker/SKILL.md), [submission-readiness](skills/submission-readiness/SKILL.md), [rebuttal](skills/rebuttal/SKILL.md) |
 

@@ -65,6 +65,7 @@ The table lists relative resources linked from each skill. Copying only a skill 
 | research-gap-finder | `evidence-policy.md` | — | — | Breaks linked policy |
 | research-question-designer | `evidence-policy.md` | — | — | Breaks linked policy |
 | result-analyzer | `evidence-policy.md` | `claim-evidence-matrix.md` | — | Breaks linked policy and template |
+| scientific-plot-generator | `evidence-policy.md` | — | — | Breaks linked policy |
 | submission-readiness | — | `submission-checklist.md` | `README.md` (transitive through the template) | Breaks linked template and venue guide |
 
 Venue overview files are orientation only. Venue-specific workflows still require current official sources; packaging the overview does not verify changing venue rules.
